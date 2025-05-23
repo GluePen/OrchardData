@@ -1,0 +1,24 @@
+{
+    "fruits": [
+        {
+            "name": "Lemon Meringue",
+            "quantity": 17,
+            "imagePath": "lemonMeringue"
+        },
+        {
+            "name": "Carrie",
+            "quantity": 8,
+            "imagePath": "carrie"
+        },
+        {
+            "name": "Glenn",
+            "quantity": 0,
+            "imagePath": "glenn"
+        },
+        {
+            "name": "Alphonso",
+            "quantity": 1,
+            "imagePath": "alphonso"
+        }
+    ]
+}
