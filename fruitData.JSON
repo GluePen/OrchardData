@@ -9,7 +9,7 @@
         {
             "name": "Carrie",
             "quantity": 8,
-            "imagePath": "carrie.png",
+            "imagePath": "carrie",
              "description": "A creamy, tart mango with a smooth texture. Great for desserts."
         },
         {
@@ -21,7 +21,7 @@
         {
             "name": "Alphonso",
             "quantity": 1,
-            "imagePath": "alphonso.png",
+            "imagePath": "alphonso",
              "description": "A creamy, tart mango with a smooth texture. Great for desserts."
         }
     ]
