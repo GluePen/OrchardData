@@ -1,9 +1,9 @@
 {
     "fruits": [
         {
-            "name": "Lemon Meringue.png",
+            "name": "Lemon Meringue",
             "quantity": 17,
-            "imagePath": "lemonMeringue",
+            "imagePath": "lemonMeringue.png",
              "description": "A creamy, tart mango with a smooth texture. Great for desserts."
         },
         {
