@@ -2,20 +2,15 @@
 <html lang="en-us">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
     <title>Mango Data</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="manifest" href="manifest.webmanifest">
     <style>
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            width: 100%;
-            overflow: hidden;
             background: #231F20;
+            overflow: hidden;
         }
 
         #unity-container {
@@ -30,33 +25,32 @@
             background: #231F20;
         }
 
-        #unity-canvas {
+        canvas {
             width: 100%;
             height: 100%;
             display: block;
-            background: #231F20;
         }
 
         #unity-loading-bar {
             position: absolute;
-            bottom: 20px;
-            width: 80%;
-            left: 10%;
-            background-color: transparent;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
             z-index: 10;
         }
 
         #unity-progress-bar-empty {
             width: 100%;
-            background: #555;
-            height: 20px;
-            border-radius: 10px;
+            height: 16px;
+            background: #444;
+            border-radius: 8px;
             overflow: hidden;
         }
 
         #unity-progress-bar-full {
-            height: 100%;
             width: 0%;
+            height: 100%;
             background: #4AF;
         }
 
@@ -65,7 +59,6 @@
             top: 10px;
             left: 10px;
             color: white;
-            z-index: 999;
         }
     </style>
 </head>
@@ -77,36 +70,20 @@
                 <div id="unity-progress-bar-full"></div>
             </div>
         </div>
-        <div id="unity-warning"> </div>
+        <div id="unity-warning"></div>
     </div>
     <script>
-        window.addEventListener("load", function () {
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("ServiceWorker.js");
-            }
-        });
-
         var canvas = document.querySelector("#unity-canvas");
         var loadingBar = document.querySelector("#unity-loading-bar");
         var progressBarFull = document.querySelector("#unity-progress-bar-full");
         var warningBanner = document.querySelector("#unity-warning");
 
         function unityShowBanner(msg, type) {
-            function updateBannerVisibility() {
-                warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-            }
-            var div = document.createElement('div');
+            let div = document.createElement("div");
             div.innerHTML = msg;
+            div.style = type === "error" ? "background:red;padding:10px;" : "background:yellow;padding:10px;";
             warningBanner.appendChild(div);
-            if (type === 'error') div.style = 'background: red; padding: 10px;';
-            else {
-                if (type === 'warning') div.style = 'background: yellow; padding: 10px;';
-                setTimeout(function () {
-                    warningBanner.removeChild(div);
-                    updateBannerVisibility();
-                }, 5000);
-            }
-            updateBannerVisibility();
+            if (type !== "error") setTimeout(() => warningBanner.removeChild(div), 5000);
         }
 
         var buildUrl = "Build";
@@ -123,16 +100,15 @@
         };
 
         loadingBar.style.display = "block";
-
         var script = document.createElement("script");
         script.src = loaderUrl;
         script.onload = () => {
-            createUnityInstance(canvas, config, (progress) => {
-                progressBarFull.style.width = 100 * progress + "%";
-            }).then((unityInstance) => {
+            createUnityInstance(canvas, config, progress => {
+                progressBarFull.style.width = (100 * progress) + "%";
+            }).then(() => {
                 loadingBar.style.display = "none";
-            }).catch((message) => {
-                unityShowBanner(message, "error");
+            }).catch(msg => {
+                unityShowBanner(msg, "error");
             });
         };
         document.body.appendChild(script);
