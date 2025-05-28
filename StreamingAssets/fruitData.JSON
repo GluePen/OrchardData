@@ -1,0 +1,28 @@
+{{
+    "fruits": [
+        {
+            "name": "Lemon_Meringue",
+            "quantity": 17,
+            "imagePath": "lemonMeringue.png",
+             "description": "A creamy, tart mango with a smooth texture. Great for desserts."
+        },
+        {
+            "name": "Carrie",
+            "quantity": 8,
+            "imagePath": "carrie.png",
+             "description": "A creamy, tart mango with a smooth texture. Great for desserts."
+        },
+        {
+            "name": "Glenn",
+            "quantity": 0,
+            "imagePath": "glenn.png",
+             "description": "A creamy, tart mango with a smooth texture. Great for desserts."
+        },
+        {
+            "name": "Alphonso",
+            "quantity": 1,
+            "imagePath": "alphonso.png",
+             "description": "A creamy, tart mango with a smooth texture. Great for desserts."
+        }
+    ]
+}
